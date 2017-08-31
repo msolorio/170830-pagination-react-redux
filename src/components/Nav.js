@@ -4,14 +4,33 @@ import {
   togglePreviousPage,
   toggleNextPage
 } from '../actions';
+import cityNames from '../data/city-names.json';
 
 export function Nav(props) {
+
+  const lastPageNumber = Math.ceil(cityNames.length / 10);
+
+
+  function prevPageClicked() {
+    if (props.pageNumber <= 1) return;
+
+    props.dispatch(togglePreviousPage(props.pageNumber));
+  }
+
+
+  function nextPageClicked() {
+    if (props.pageNumber >= lastPageNumber) return;
+
+    props.dispatch(toggleNextPage(props.pageNumber));
+  }
+
+
   return (
     <div className="Nav">
 
       <button className="togglePageButton"
         type="button"
-        onClick={() => props.dispatch(togglePreviousPage(props.pageNumber))}>
+        onClick={prevPageClicked}>
         {`<`}
       </button>
       &nbsp;&nbsp;
@@ -21,7 +40,7 @@ export function Nav(props) {
 
       <button className="togglePageButton"
         type="button"
-        onClick={() => props.dispatch(toggleNextPage(props.pageNumber))}>
+        onClick={nextPageClicked}>
         {`>`}
       </button>
 

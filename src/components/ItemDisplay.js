@@ -2,17 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import cityNames from '../data/city-names.json';
 
-// console.log(cityNames);
-
 export function ItemDisplay(props) {
 
-  // takes in a page number
-  // returns 10 names based on page number
   function getNamesPerPage(pageNumber) {
     const startingNameIndex = (pageNumber - 1) * 10;
 
     const namesToDisplay = [];
     for (let i=startingNameIndex, j=startingNameIndex+10; i<j; i++) {
+      if (!cityNames[i]) break;
       namesToDisplay.push(cityNames[i]);
     }
 

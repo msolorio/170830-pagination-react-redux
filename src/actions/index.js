@@ -3,6 +3,7 @@ export const togglePreviousPage = (currentPageNumber) => ({
   currentPageNumber
 });
 
+
 export const toggleNextPage = (currentPageNumber) => ({
   type: 'TOGGLE_NEXT_PAGE',
   currentPageNumber

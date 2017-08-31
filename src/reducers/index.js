@@ -3,15 +3,16 @@ const initialState = {
 };
 
 export const paginationReducer = (state=initialState, action) => {
+
+
   if (action.type === 'TOGGLE_PREVIOUS_PAGE') {
     const pageNumber = action.currentPageNumber - 1;
 
-    if (pageNumber >= 1) {
-      return Object.assign({}, state, {
-        pageNumber
-      });
-    } else return state;
+    return Object.assign({}, state, {
+      pageNumber
+    });
   }
+
 
   if (action.type === 'TOGGLE_NEXT_PAGE') {
     const pageNumber = action.currentPageNumber + 1;
@@ -20,6 +21,7 @@ export const paginationReducer = (state=initialState, action) => {
       pageNumber
     });
   }
+
 
   return state;
 }
